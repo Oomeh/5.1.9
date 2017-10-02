@@ -56,7 +56,7 @@ bool side_changed;
  * 
  */
 int main(int argc, char** argv) {
-    
+    //The code doesn't actually do anything. As far as I can tell, the lab didn't specify what we had to do with it.
     return 0;
 }
 
