@@ -12,15 +12,21 @@
  */
 
 #include <cstdlib>
-
+#include <iostream>
 using namespace std;
 double area;
 class AdHocSquare {
 public:
-AdHocSquare(double side);
-void set_side(double side);
+AdHocSquare(double side){
+    this->side = side;
+}
+void set_side(double side)
+{
+    this->side = side;
+}
 double get_area()
 {
+    area = side * side;
     return area;
 }
 private:
@@ -29,7 +35,9 @@ double side;
 
 class LazySquare {
 public:
-LazySquare(double side);
+LazySquare(double side){
+    this->side = side;
+}
 void set_side(double side)
 {
     double oldSide;
@@ -41,9 +49,16 @@ void set_side(double side)
     {
         side_changed = true;
     }
+    
+    if(side_changed)
+    {
+        this->side = side;
+        side_changed = false;
+    }
 }
 double get_area()
 {
+    area = side*side;
     return area;
 }
 private:  
@@ -56,7 +71,15 @@ bool side_changed;
  * 
  */
 int main(int argc, char** argv) {
-    //The code doesn't actually do anything. As far as I can tell, the lab didn't specify what we had to do with it.
+
+    AdHocSquare square1(3);
+    cout << square1.get_area() << endl;
+    square1.set_side(5);
+    cout << square1.get_area() << endl;
+    LazySquare square2(3);
+    cout << square2.get_area() << endl;
+    square2.set_side(5);
+    cout << square2.get_area() << endl;
     return 0;
 }
 
